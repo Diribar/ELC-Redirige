@@ -13,10 +13,12 @@ const entPrueba = carpeta == "2-Prueba";
 
 // Listener
 const puerto = entProd ? 4208 : entPrueba ? 4211 : 80;
-app.listen(puerto, () => console.log("\nELC Redirecciona - Servidor funcionando..."));
+app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
 
 // Redirige a 'peliculas.elc'
 const inicio = "https://peliculas";
 const elc = "evangelicemoslacultura";
 const urlHost = inicio + (entProd ? `.${elc}.com` : entPrueba ? `2.${elc}.com` : `.${elc}:3001`);
-app.use((req, res) => res.redirect(urlHost + req.originalUrl));
+app.use((req, res) => {
+	return res.redirect(urlHost + req.originalUrl);
+});

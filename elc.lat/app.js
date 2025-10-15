@@ -13,7 +13,7 @@ const entPrueba = carpeta == "2-Prueba";
 
 // Listener
 const puerto = entProd ? 4204 : entPrueba ? 4201 : 80;
-app.listen(puerto, () => console.log("\nELC Redirecciona - Servidor funcionando..."));
+app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
 
 // Redirige a 'peliculas.elc'
 const inicio = "https://peliculas";

@@ -12,12 +12,10 @@ app.use(cookies());
 
 // Entornos
 const entProd = path.basename(__dirname) == "1-Actual";
-const entPrueba = path.basename(__dirname) == "2-Prueba";
-const entDesarr = !entProd && !entPrueba;
 
 // Listener
-const puerto = entProd ? 4210 : entPrueba ? 4207 : 3001;
-if (entDesarr) {
+const puerto = entProd ? 4205 : 3001;
+if (!entProd) {
 	const https = require("https");
 	const fs = require("fs");
 	const opciones = {cert: fs.readFileSync("./https-cert.pem"), key: fs.readFileSync("./https-clave.pem")};
@@ -25,9 +23,8 @@ if (entDesarr) {
 } else app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 
 // Redirige
-const inicio = "https://peliculas";
-const elc = "evangelicemoslacultura";
-const urlHost = inicio + (entProd ? `.${elc}.com` : entPrueba ? `2.${elc}.com` : `.${elc}:3006`);
+const url = "https://peliculasconvalorescatolicos";
+const urlHost = url + (entProd ? ".com" : ":3006");
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {

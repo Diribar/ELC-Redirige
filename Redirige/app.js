@@ -14,7 +14,6 @@ const puerto = entProd ? 4204 : 80;
 app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
 
 // Redirige a 'peliculas.elc'
-const inicio = "https://peliculas";
-const elc = ".evangelicemoslacultura.com";
-const urlHost = inicio + (entProd ? elc : elc + ":3001");
+const url = "https://peliculasconvalorescatolicos";
+const urlHost = url + (entProd ? ".com" : ":3001");
 app.use((req, res) => res.redirect(urlHost + req.originalUrl));

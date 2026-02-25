@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; // cookies + redirige
 console.clear();
 
 // Requires
@@ -21,8 +21,8 @@ if (entDesarr) {
 	const https = require("https");
 	const fs = require("fs");
 	const opciones = {cert: fs.readFileSync("./https-cert.pem"), key: fs.readFileSync("./https-clave.pem")};
-	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
-} else app.listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
+	https.createServer(opciones, app).listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
+} else app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 
 // Redirige
 const inicio = "https://peliculas";

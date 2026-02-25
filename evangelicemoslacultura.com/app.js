@@ -1,4 +1,4 @@
-"use strict"; // 2025-ago-26
+"use strict"; // redirige
 console.clear();
 
 // Requires

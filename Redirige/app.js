@@ -12,7 +12,7 @@ const entProd = carpeta == "1-Actual";
 const entPrueba = carpeta == "2-Prueba";
 
 // Listener
-const puerto = entProd ? 4208 : entPrueba ? 4211 : 80;
+const puerto = entProd ? 4205 : 80;
 app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
 
 // Redirige a 'peliculas.elc'

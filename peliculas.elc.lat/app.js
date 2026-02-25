@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; // cookies + redirige
 console.clear();
 
 // Requires

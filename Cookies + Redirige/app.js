@@ -11,7 +11,7 @@ const cookies = require("cookie-parser");
 app.use(cookies());
 
 // Entornos
-const entProd = path.basename(__dirname) == "1-Actual";
+const entProd = true;
 
 // Listener
 const puerto = entProd ? 4205 : 3001;
@@ -31,7 +31,6 @@ app.use((req, res) => {
 	if (req.query.pideCookies) {
 		// Variables
 		const {cliente_id, email} = req.cookies;
-		console.log(33, cliente_id, email);
 
 		// Extiende la vigencia de las cookies
 		if (cliente_id) res.cookie("cliente_id", cliente_id, {maxAge}); // un año
@@ -46,6 +45,6 @@ app.use((req, res) => {
 		req.originalUrl = req.originalUrl.replace("pideCookies=true&", ""); // Limpia el url
 	}
 
-	// Redirige a 'peliculas.evangelicemoslacultura'
+	// Redirige a 'peliculasconvalorescatolicos'
 	return res.redirect(urlHost + req.originalUrl);
 });

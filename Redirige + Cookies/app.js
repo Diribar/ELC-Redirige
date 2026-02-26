@@ -14,13 +14,8 @@ app.use(cookies());
 const entProd = true;
 
 // Listener
-const puerto = entProd ? 4204 : 3001;
-if (!entProd) {
-	const https = require("https");
-	const fs = require("fs");
-	const opciones = {cert: fs.readFileSync("./https-cert.pem"), key: fs.readFileSync("./https-clave.pem")};
-	https.createServer(opciones, app).listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
-} else app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
+const puerto = entProd ? 4204 : 80;
+app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 
 // Redirige
 const url = "https://peliculasconvalorescatolicos";

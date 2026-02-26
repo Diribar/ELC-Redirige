@@ -10,7 +10,7 @@ const app = express();
 const entProd = true;
 
 // Listener
-const puerto = entProd ? 4204 : 80;
+const puerto = entProd ? 4205 : 80;
 app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
 
 // Redirige a 'peliculas.elc'

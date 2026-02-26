@@ -25,13 +25,19 @@ if (!entProd) {
 // Redirige
 const url = "https://peliculasconvalorescatolicos";
 const urlHost = url + (entProd ? ".com" : ":3006");
+const maxAge = 1000 * 60 * 60 * 24 * 365;
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
 		// Variables
 		const {cliente_id, email} = req.cookies;
+		console.log(33, cliente_id, email);
 
-		// Envía las cookies de 'cliente_id' y 'email'
+		// Extiende la vigencia de las cookies
+		if (cliente_id) res.cookie("cliente_id", cliente_id, {maxAge}); // un año
+		if (email) res.cookie("email", email, {maxAge}); // un año
+
+		// Prepara las cookies de 'cliente_id' y 'email'
 		if (cliente_id) req.originalUrl += "&cliente_id=" + cliente_id;
 		if (email) req.originalUrl += "&email=" + email;
 

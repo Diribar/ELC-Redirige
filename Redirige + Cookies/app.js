@@ -30,7 +30,7 @@ app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
 		// Variables
-		const {cliente_id, email} = req.cookies;
+		const {cliente_id, email} = req.cookies || {};
 
 		// Extiende la vigencia de las cookies
 		if (cliente_id) res.cookie("cliente_id", cliente_id, {maxAge}); // un año

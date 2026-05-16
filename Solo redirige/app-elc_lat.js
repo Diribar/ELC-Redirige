@@ -9,8 +9,8 @@ const app = express();
 const entProd = true;
 
 // Listener
-const puerto = entProd ? 4205 : 80;
-app.listen(puerto, () => console.log("ELC Redirecciona - Servidor funcionando..."));
+const puerto = entProd ? 4206 : 80;
+app.listen(puerto, () => console.log("elc.lat - Redireccionando..."));
 
 // Redirige a 'peliculas.elc'
 const url = "https://peliculasconvalorescatolicos";

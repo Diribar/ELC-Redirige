@@ -21,7 +21,7 @@ app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor fun
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
-		// Variables
+		// Busca las cookies locales
 		const {cliente_id, email} = req.cookies || {};
 
 		// Extiende la vigencia de las cookies
@@ -32,9 +32,9 @@ app.use((req, res) => {
 		// Prepara las cookies de 'cliente_id' y 'email'
 		if (cliente_id) req.originalUrl += "&cliente_id=" + cliente_id;
 		if (email) req.originalUrl += "&email=" + email;
+		if (!cliente_id && !email) req.originalUrl += "&sinCookie=true"; // Si no tiene ninguna de ellas, envía la cookie 'sinCookie'
 
 		// Otras
-		if (!cliente_id && !email) req.originalUrl += "&sinCookie=true"; // Si no tiene ninguna de ellas, envía la cookie 'sinCookie'
 		req.originalUrl = req.originalUrl.replace("pideCookies=true&", ""); // Limpia el url
 	}
 

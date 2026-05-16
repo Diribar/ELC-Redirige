@@ -18,9 +18,6 @@ const puerto = entProd ? 4204 : 80;
 app.listen(puerto, () => console.log("ELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 
 // Redirige
-const url = "https://peliculasconvalorescatolicos";
-const urlHost = url + (entProd ? ".com" : ":3006");
-const maxAge = 1000 * 60 * 60 * 24 * 365;
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
@@ -28,6 +25,7 @@ app.use((req, res) => {
 		const {cliente_id, email} = req.cookies || {};
 
 		// Extiende la vigencia de las cookies
+		const maxAge = 1000 * 60 * 60 * 24 * 365;
 		if (cliente_id) res.cookie("cliente_id", cliente_id, {maxAge}); // un año
 		if (email) res.cookie("email", email, {maxAge}); // un año
 
@@ -41,5 +39,7 @@ app.use((req, res) => {
 	}
 
 	// Redirige a 'peliculasconvalorescatolicos'
-	return res.redirect(urlHost + req.originalUrl);
+	const url = "https://peliculasconvalorescatolicos";
+	const ext = entProd ? ".com" : ":3006";
+	return res.redirect(url + ext + req.originalUrl);
 });

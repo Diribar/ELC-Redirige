@@ -1,7 +1,11 @@
 {
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon -e js app.js"
+		"start": "nodemon app.js"
+	},
+	"nodemonConfig": {
+		"ext": "js",
+		"quiet": true
 	},
 	"keywords": [],
 	"author": "Diego Iribarren",
